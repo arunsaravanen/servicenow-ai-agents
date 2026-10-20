@@ -90,7 +90,7 @@ Prerequisites: Node 20+, Python 3.12+ with [uv](https://docs.astral.sh/uv/), an 
 `ANTHROPIC_API_KEY`, and a ServiceNow instance with AI Agent Studio.
 
 1. **Install and log in.** Install the ServiceNow SDK in both Fluent projects, log it in under an alias, then create `.env.<alias>` in the repo root
-   (git-ignored) with `SN_INSTANCE`, `SN_USER`, `SN_PASSWORD`, `SN_AGENT_USER` and `SN_AGENT_PASSWORD`.
+   (git-ignored) from [`.env.example`](.env.example).
 
    ```bash
    npm --prefix platform install && npm --prefix studio install
@@ -104,7 +104,8 @@ Prerequisites: Node 20+, Python 3.12+ with [uv](https://docs.astral.sh/uv/), an 
    ```
 
 3. **Deploy** the core app, then the Studio app. `deploy.py` installs, publishes every flow and fails if
-   any flow is not published and active. The alias must be listed in `ALLOWED_ENVS` in `deploy.py`.
+   any flow is not published and active. The alias must be listed in `ALLOWED_ENVS` and in each project's
+   environments in `PROJECTS`, both in `deploy.py`.
 
    ```bash
    SN_ENV=<alias> python3 deploy.py
@@ -126,6 +127,28 @@ Prerequisites: Node 20+, Python 3.12+ with [uv](https://docs.astral.sh/uv/), an 
    uv run pytest -q
    uv run python evals/run_eval.py --approve-harness --reps 2
    ```
+
+### On a free Personal Developer Instance (PDI)
+
+Nothing lives only on an instance: the repo is the source of truth, so the demo can be rebuilt on a new
+instance at any time.
+
+1. **Get an instance.** Request one at [developer.servicenow.com](https://developer.servicenow.com) and sign in
+   as `admin`. Use the latest release on offer.
+2. **Check it before deploying.** Run step 2 above. Two results decide what you can demo:
+   - **AI Agent Studio** present: you can run both agents. Absent: deploy the core app only; the Claude host
+     and its evals work without it.
+   - **Vendor prefix** `snc`: deploy as is. Any other prefix: the instance may refuse `x_snc_helix_*` as a
+     third-party scope. Rename the two scopes (`now.config.json` in `platform/` and `studio/`, plus every
+     `x_snc_helix_` reference) to that prefix and build again.
+3. **Register the alias.** Pick an alias such as `pdi`, add it to `ALLOWED_ENVS` and to each project in
+   `PROJECTS` in `deploy.py`, and create `.env.pdi` from `.env.example`.
+4. **Deploy, then set the integration password.** Run step 3 above (skip `studio` without AI Agent Studio).
+   In the instance, set a password for `helix.agent.host` and put it in `.env.pdi` as `SN_AGENT_PASSWORD`.
+5. **Demo and evaluate** with steps 4 and 5, using `--env pdi` and `SN_ENV=pdi`.
+
+PDIs sleep when idle and are reclaimed after a period of inactivity. Open yours the day before a demo, and
+if it was reclaimed, request a new one and repeat these steps.
 
 Lessons from building on real instances, verified results and open findings are in
 [docs/build-notes.md](docs/build-notes.md).
