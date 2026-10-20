@@ -1,0 +1,31 @@
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node / now-sdk
+node_modules/
+dist/
+target/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Demo recordings stay local
+recordings/
+
+# Eval output: derived, bulky or failure-log files stay local (results.jsonl and _state.json are committed)
+.claude/hillclimb/**/traces/
+.claude/hillclimb/**/report.html
+.claude/hillclimb/**/trajectory/
+.claude/hillclimb/**/.harness_approved
+.claude/hillclimb/**/errors.jsonl

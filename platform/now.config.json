@@ -1,0 +1,6 @@
+{
+    "scope": "x_snc_helix_core",
+    "scopeId": "23dd42de799f22b003e48e7daa2995d1",
+    "name": "Helix AI Demo",
+    "tsconfigPath": "./src/server/tsconfig.json"
+}

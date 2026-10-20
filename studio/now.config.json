@@ -1,0 +1,6 @@
+{
+    "scope": "x_snc_helix_agent",
+    "scopeId": "fe3a3d84f3ef0f536bdf3d22a579af7c",
+    "name": "Helix Studio Agent",
+    "tsconfigPath": "./src/server/tsconfig.json"
+}

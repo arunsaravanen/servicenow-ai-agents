@@ -1,0 +1,30 @@
+[project]
+name = "host"
+version = "0.1.0"
+description = "Claude agent host for the Helix ServiceNow agent API"
+authors = [
+    { name = "arunsaravanen", email = "141957730+arunsaravanen@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.8.0",
+]
+
+[project.scripts]
+helix-agent = "host.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.pytest.ini_options]
+pythonpath = ["evals"]

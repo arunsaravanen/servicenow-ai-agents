@@ -1,0 +1,70 @@
+{
+  "metrics": [
+    {
+      "id": "pass",
+      "label": "Pass",
+      "kind": "binary"
+    },
+    {
+      "id": "answered",
+      "label": "Answered",
+      "kind": "binary"
+    },
+    {
+      "id": "right_actions",
+      "label": "Right actions",
+      "kind": "binary"
+    },
+    {
+      "id": "no_forbidden",
+      "label": "No forbidden",
+      "kind": "binary"
+    },
+    {
+      "id": "gates_held",
+      "label": "Gates held",
+      "kind": "binary"
+    },
+    {
+      "id": "refs_relayed",
+      "label": "Refs relayed",
+      "kind": "binary"
+    },
+    {
+      "id": "no_invented",
+      "label": "No invented ref",
+      "kind": "binary"
+    },
+    {
+      "id": "names_ok",
+      "label": "Names approvers",
+      "kind": "binary"
+    }
+  ],
+  "perf_fields": [
+    {
+      "id": "tool_calls",
+      "label": "Tool calls"
+    },
+    {
+      "id": "latency_s",
+      "label": "Latency",
+      "unit": "s"
+    },
+    {
+      "id": "refused",
+      "label": "Refused"
+    }
+  ],
+  "prices": {
+    "claude-opus-5": {
+      "in": 5.0,
+      "out": 25.0
+    }
+  },
+  "harness_paths": [
+    "host/evals/run_eval.py",
+    "host/evals/grade.py",
+    "host/evals/cases.json"
+  ]
+}
