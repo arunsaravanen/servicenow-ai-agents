@@ -141,4 +141,4 @@ This is a demo, and some trust decisions are simplified:
 
 ## Author
 
-Built by Arun Saravanen, ServiceNow Certified Technical Architect. Released under the [MIT License](LICENSE).
+Built by [Arun Saravanen](https://www.linkedin.com/in/arunsaravanen/), ServiceNow Certified Technical Architect. Released under the [MIT License](LICENSE).
