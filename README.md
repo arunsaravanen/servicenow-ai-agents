@@ -7,6 +7,8 @@ control. Autonomy is set per risk tier, identity and approvals are enforced in c
 prompt, the agent runs as a least-privilege integration user, every action lands in an append-only audit
 table, and changes to the agent are measured with a code-graded eval suite (95% to 100% from one targeted fix).
 
+**Read the case study:** [the problem, the design, the failure that got caught, and the limits](docs/case-study.md).
+
 ![The Claude host handling a lockout: MFA denied and refused, then approved and unlocked](docs/unlock-replay.gif)
 
 *Tier 1 in action: the denied push is refused by the platform and still audited; the approved one unlocks the
